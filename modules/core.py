@@ -27,7 +27,7 @@ def duration(filename):
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT)
     return float(result.stdout)
-    
+
 def exec(cmd):
         process = subprocess.run(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         output = process.stdout.decode()
@@ -97,11 +97,11 @@ def vid_info(info):
             try:
                 if "RESOLUTION" not in i[2] and i[2] not in temp and "audio" not in i[2]:
                     temp.append(i[2])
-                    
+
                     # temp.update(f'{i[2]}')
                     # new_info.append((i[2], i[0]))
                     #  mp4,mkv etc ==== f"({i[1]})" 
-                    
+
                     new_info.update({f'{i[2]}':f'{i[0]}'})
 
             except:
@@ -126,7 +126,7 @@ async def run(cmd):
     if stderr:
         return f'[stderr]\n{stderr.decode()}'
 
-    
+
 
 def old_download(url, file_name, chunk_size = 1024 * 10):
     if os.path.exists(file_name):
@@ -157,13 +157,13 @@ def get_playlist_videos(playlist_url):
     try:
         # Create a Playlist object
         playlist = Playlist(playlist_url)
-        
+
         # Get the playlist title
         playlist_title = playlist.title
-        
+
         # Initialize an empty dictionary to store video names and links
         videos = {}
-        
+
         # Iterate through the videos in the playlist
         for video in playlist.videos:
             try:
@@ -172,7 +172,7 @@ def get_playlist_videos(playlist_url):
                 videos[video_title] = video_url
             except Exception as e:
                 logging.error(f"Could not retrieve video details: {e}")
-        
+
         return playlist_title, videos
     except Exception as e:
         logging.error(f"An error occurred: {e}")
@@ -188,16 +188,16 @@ def get_all_videos(channel_url):
     all_videos = []
     with YoutubeDL(ydl_opts) as ydl:
         result = ydl.extract_info(channel_url, download=False)
-        
+
         if 'entries' in result:
             channel_name = result['title']
             all_videos.extend(result['entries'])
-            
+
             while 'entries' in result and '_next' in result:
                 next_page_url = result['_next']
                 result = ydl.extract_info(next_page_url, download=False)
                 all_videos.extend(result['entries'])
-            
+
             video_links = {index+1: (video['title'], video['url']) for index, video in enumerate(all_videos)}
             return video_links, channel_name
         else:
@@ -225,7 +225,7 @@ async def download_video(url, cmd, name):
     print(download_cmd)
     logging.info(download_cmd)
     k = subprocess.run(download_cmd, shell=True)
-    
+
     # Check if the URL is of type 'visionias' or 'penpencilvod'
     if "visionias" in cmd:
         return await download_visionias(url, cmd, name)
@@ -324,4 +324,3 @@ async def send_vid(bot: Client, m: Message,cc,filename,thumb,name,prog):
 
     os.remove(f"{filename}.jpg")
     await reply.delete (True)
-    
