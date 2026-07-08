@@ -314,16 +314,16 @@ async def txt_handler(bot: Client, m: Message):
             try:  
                 
                 cc = f"""**➭ Index » {str(count).zfill(3)}
-➭ Title » {name1} {res}जाटⁱˢß𝐚𝐜𝐤ツ.mkv
+➭ Title » {name1} {res}.mkv
 ➭ 𝐁𝐚𝐭𝐜𝐡 » {b_name}
 ➭ Quality » {res}
 
-➭ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}\n\n<pre><code>━━━━━✦✦━━━━━</code></pre>**"""
+➭ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}\n\n<pre><code>━━━━━✦𝗭𝗫✦━━━━━</code></pre>**"""
                 cc1 = f"""**➭ Index » {str(count).zfill(3)}
-➭ Title » {name1}जाटⁱˢß𝐚𝐜𝐤ツ.pdf
+➭ Title » {name1}.pdf
 ➭ 𝐁𝐚𝐭𝐜𝐡 » {b_name}
 
-➭ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}\n\n<pre><code>━━━━━✦जाटⁱˢß𝐚𝐜𝐤ツ✦━━━━━</code></pre>**"""
+➭ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 : {CR}\n\n<pre><code>━━━━━✦𝗭𝗫✦━━━━━</code></pre>**"""
                     
         
                 if "drive" in url:
@@ -494,7 +494,7 @@ async def txt_handler(bot: Client, m: Message):
     except Exception:
         res = "UN"
 
-    await editable.edit("**Enter Your Name or send '1' for use default.\n Eg : @jaat_mk**")
+    await editable.edit("**Enter Your Name or send '1' for use default.\n Eg : @SumitTripathi**")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
