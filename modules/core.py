@@ -390,6 +390,7 @@ async def download_video(url, cmd, name):
 
 
 async def send_doc(
+async def send_doc(
     bot: Client,
     m: Message,
     cc,
@@ -404,7 +405,7 @@ async def send_doc(
         f"Uploading » {name}"
     )
 
-await asyncio.sleep(1)
+    await asyncio.sleep(1)
 
     start_time = time.time()
 
