@@ -293,8 +293,8 @@ async def txt_handler(bot: Client, m: Message):
             name = f'{str(count).zfill(3)}) {name1[:60]} {my_name}'
                       
             
-                        if "edge.api.brightcove.com" in url:
-                bcov = 'bcov_auth=YOUR_TOKEN'
+                                    if "edge.api.brightcove.com" in url:
+                bcov = "APNA_BCOV_TOKEN"
                 url = url.split("bcov_auth")[0] + bcov
 
             if "youtu" in url:
@@ -308,7 +308,6 @@ async def txt_handler(bot: Client, m: Message):
                     f'--downloader-args "aria2c:-x16 -s16 -k1M -j16" '
                     f'-o "{name}.mp4" "{url}"'
                 )
-
             elif "youtube.com" in url or "youtu.be" in url:
                 cmd = (
                     f'yt-dlp --cookies youtube_cookies.txt '
@@ -316,7 +315,6 @@ async def txt_handler(bot: Client, m: Message):
                     f'--downloader-args "aria2c:-x16 -s16 -k1M -j16" '
                     f'-f "{ytf}" "{url}" -o "{name}.mp4"'
                 )
-
             else:
                 cmd = (
                     f'yt-dlp --downloader aria2c '
@@ -324,7 +322,7 @@ async def txt_handler(bot: Client, m: Message):
                     f'-f "{ytf}" "{url}" -o "{name}.mp4"'
                 )
 
-            try:
+            try::
 
                 cc = f"""**➭ Index » {str(count).zfill(3)}
 ➭ Title » {name1} {res}.mkv
