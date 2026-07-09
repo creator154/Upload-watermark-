@@ -289,11 +289,10 @@ async def txt_handler(bot: Client, m: Message):
              url = f"https://anonymouspwplayerrrr-c95d81521328.herokuapp.com/pw?url={url}&token={raw_text4}"
                      
                                                          
-            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
+                        name1 = links[i][0].strip()
             name = f'{str(count).zfill(3)}) {name1[:60]} {my_name}'
-                      
-            
-                                    if "edge.api.brightcove.com" in url:
+
+            if "edge.api.brightcove.com" in url:
                 bcov = "APNA_BCOV_TOKEN"
                 url = url.split("bcov_auth")[0] + bcov
 
